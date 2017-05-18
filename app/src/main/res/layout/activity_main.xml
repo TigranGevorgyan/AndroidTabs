@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    tools:context="com.example.taron.androidtabs.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/activity_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:orientation="horizontal"
+        android:background="@color/tabsBackgroundColor">
+
+        <TextView
+            android:id="@+id/activity_main_news_tab_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="News"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:drawableTop="@drawable/ic_home_white_24dp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/activity_main_collections_tab_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Collections"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:drawableTop="@drawable/ic_arrange_send_to_back_white_24dp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/activity_main_communities_tab_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Communities"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:drawableTop="@drawable/ic_newspaper_white_24dp"
+            />
+
+        <TextView
+            android:id="@+id/activity_main_notification_tab_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Notification"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:drawableTop="@drawable/ic_bell_ring_white_24dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
