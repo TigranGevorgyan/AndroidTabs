@@ -20,9 +20,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView communitiesTab;
     TextView notificationTab;
 
+    EditText editText;
+
     TextView textView;
 
-    String sendString = "47";
+    String sendString = "";
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -37,12 +39,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         communitiesTab = (TextView)findViewById(R.id.activity_main_communities_tab_tv);
         notificationTab = (TextView)findViewById(R.id.activity_main_notification_tab_tv);
 
+        editText = (EditText)findViewById(R.id.communities_fragment_edittext);
+
         textView = (TextView)findViewById(R.id.fragment_notification_text_view);
 
         Fragment fragment = BottomNewsFragment.newInstance();
         FragmentManager fragmentManager1 = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager1.beginTransaction();
-//        fragmentTransaction.addToBackStack(BottomNewsFragment.TAG);
         fragmentTransaction.add(R.id.activity_main_container,fragment, BottomNewsFragment.TAG);
         fragmentTransaction.commit();
 
@@ -117,21 +120,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("manager","fragment 4 size " + fragmentManager.getFragments().size());
                 for (Fragment element : fragmentManager.getFragments()){
                     if (element instanceof BottomNotificationsFragment) {
-                        if (sendString != null){
-                            fragment = BottomNotificationsFragment.newInstance(sendString);
-                            fragmentTransaction.add(R.id.activity_main_container,fragment, BottomNotificationsFragment.TAG);
-                        }
+//                        if (sendString != null){
+//                            fragment = BottomNotificationsFragment.newInstance(sendString);
+//                            fragmentTransaction.add(R.id.activity_main_container,fragment, BottomNotificationsFragment.TAG);
+//                        }
+
                         if (fragment1 != null) {
                             fragmentTransaction.hide(fragment1);
                         }
-                        if (fragment != null) {
-                            fragmentTransaction.show(fragment);
-                            fragmentTransaction.commit();
-                        }
-                        if(fragment == null){
-                            fragmentTransaction.show(element);
-                            fragmentTransaction.commit();
-                        }
+                        fragmentTransaction.show(element);
+                        fragmentTransaction.commit();
+
+//                        if (fragment != null) {
+//                            fragmentTransaction.show(fragment);
+//                            fragmentTransaction.commit();
+//                        }
+//                        if(fragment == null){
+//                            fragmentTransaction.show(element);
+//                            fragmentTransaction.commit();
+//                        }
                         return;
                     }
                 }
@@ -143,18 +150,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this,"4",Toast.LENGTH_SHORT).show();
                 break;
         }
-
     }
 
     @Override
     public void sendText(String text) {
         for (Fragment item : fragmentManager.getFragments()){
             if (item instanceof BottomNotificationsFragment){
-                sendString = text;
-                Log.d("jjj"," " + sendString);
-//                fragmentTransaction.add(R.id.activity_main_container,BottomNotificationsFragment.
-//                        newInstance(sendString),BottomNotificationsFragment.TAG);
-//                fragmentTransaction.commit();
+                textView = (TextView)findViewById(R.id.fragment_notification_text_view);
+                textView.setText(text);
                 break;
             }
         }
